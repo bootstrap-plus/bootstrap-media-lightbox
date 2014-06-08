@@ -19,6 +19,7 @@
     left: 20px;
     font-size: 300%;
     color: white;
+    cursor: pointer;
 }
 
 #bootstrap-media-lightbox-forward {
@@ -27,12 +28,14 @@
     right: 20px;
     font-size: 300%;
     color: white;
+    cursor: pointer;
 }
 
 #bootstrap-media-lightbox-close {
     position:absolute;
     top:10px;
     right:20px;
+    cursor: pointer;
 }
 
 #bootstrap-media-lightbox-close .glyphicon-remove-circle {

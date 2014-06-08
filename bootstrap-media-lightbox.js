@@ -36,14 +36,14 @@
                 var closeButton = '<div id="bootstrap-media-lightbox-close">'+
                     '<span class="fa-stack fa-lg">'+
                     '<i class="fa fa-square fa-stack-2x"></i>'+
-                    '<i class="fa fa-times fa-stack-1x fa-inverse pointer" data-dismiss="modal" aria-hidden="true"></i>'+
+                    '<i class="fa fa-times fa-stack-1x fa-inverse" data-dismiss="modal" aria-hidden="true"></i>'+
                     '</span>'+
                     '</div>'
                 var backwardButton = '<i class="fa fa-chevron-left"></i>';
                 var forwardButton = '<i class="fa fa-chevron-right"></i>';
             } else {
                 var closeButton = '<div id="bootstrap-media-lightbox-close">'+
-                    '<i class="glyphicon glyphicon-remove-circle pointer" data-dismiss="modal" aria-hidden="true"></i>'+
+                    '<i class="glyphicon glyphicon-remove-circle" data-dismiss="modal" aria-hidden="true"></i>'+
                     '</div>'
                 var backwardButton = '<i class="glyphicon glyphicon-chevron-left"></i>';
                 var forwardButton = '<i class="glyphicon glyphicon-chevron-right"></i>';
@@ -54,12 +54,13 @@
                     closeButton+
                     '<div id="bootstrap-media-lightbox-content-container" data-dismiss="modal"></div>'+
 
-                    '<div id="bootstrap-media-lightbox-backward" class="pointer">'+backwardButton+'</div>'+
+                    '<div id="bootstrap-media-lightbox-backward">'+backwardButton+'</div>'+
 
-                    '<div id="bootstrap-media-lightbox-forward" class="pointer">'+forwardButton+'</div>'+
+                    '<div id="bootstrap-media-lightbox-forward">'+forwardButton+'</div>'+
 
                     '<div id="bootstrap-media-lightbox-caption-container">'+
-                    '<div id="bootstrap-media-lightbox-caption"></div>'+
+                        '<div id="bootstrap-media-lightbox-caption"></div>'+
+                    '</div>'+
                 '</div>'
             );
         }
@@ -217,11 +218,12 @@
     {
         var caption = $a.attr('title');
 
-        if (caption !== "" && this.options.caption === true) {
-            $('#bootstrap-media-lightbox-caption').show();
+        if (caption !== "" && caption !== undefined && this.options.caption === true) {
+
+            $('#bootstrap-media-lightbox-caption-container').show();
             $('#bootstrap-media-lightbox-caption').text(caption);
         } else {
-            $('#bootstrap-media-lightbox-caption').hide();
+            $('#bootstrap-media-lightbox-caption-container').hide();
         }
     }
 
@@ -266,5 +268,7 @@
 
         new BootstrapLightBox($(this), options);
     };
+
+    $('.lightbox').lightbox();
 
 })(jQuery);

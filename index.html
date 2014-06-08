@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bootstrap-media-lightbo</title>
+
+        <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="js/bootstrap/css/docs.min.css" rel="stylesheet">
+        <link href="bootstrap-media-lightbox.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>bootstrap-media-lightbox</h1>
+
+
+            <p>
+                A lightweight and borderless media lightbox extension for bootstrap3. It supports single images, image gallieries, videos and iframes.
+            </p>
+
+
+
+            <h3>Singe image with link</h3>
+
+            <div class="bs-example">
+                <a id="lightbox1" href="img/beach.jpg">
+                    Click here to show the lightbox
+                </a>
+            </div>
+            <div class="highlight">
+                    <pre>
+                        <code class="prettyprint">&lt;a class="lightbox" href="beach.jpg"&gt;<br />&nbsp;Click here to show the lightbox<br />&lt;/a&gt;</code>
+                    </pre>
+            </div>
+
+            <h3>Singe image with thumbnail</h3>
+
+            <div class="bs-example">
+                <a id="lightbox2" href="img/beach.jpg">
+                    <img src="img/beach-small.jpg" class="img-thumbnail" width="200">
+                </a>
+            </div>
+            <div class="highlight" >
+                <pre>
+                    <code class="prettyprint">&lt;a class="lightbox" href="beach.jpg"&gt;<br />&nbsp;&lt;img src="beach-thumbnail.jpg" class="img-thumbnail" /&gt;<br />&lt;/a&gt;</code>
+                </pre>
+            </div>
+
+
+            <h3>Singe image with thumbnail and caption</h3>
+
+            <div class="bs-example">
+                <a id="lightbox3" href="img/beach.jpg" title="This is a beach">
+                    <img src="img/beach-small.jpg" class="img-thumbnail" width="200">
+                </a>
+            </div>
+            <div class="highlight" >
+                <pre>
+                    <code class="prettyprint">&lt;a class="lightbox" href="beach.jpg" title="This is a beach" &gt;<br />&nbsp;&lt;img src="beach-thumbnail.jpg" class="img-thumbnail" /&gt;<br />&lt;/a&gt;</code>
+                </pre>
+            </div>
+        </div>
+
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap-media-lightbox.js"></script>
+        <script src="js/google-code-prettify/run_prettify.js"></script>
+
+        <script type="text/javascript">
+            jQuery('#lightbox1').lightbox();
+            jQuery('#lightbox2').lightbox();
+            jQuery('#lightbox3').lightbox();
+        </script>
+
+
+
+    </body>
+</html>
