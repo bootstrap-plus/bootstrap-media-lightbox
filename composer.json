@@ -6,9 +6,6 @@
   "license": "MIT",
   "extra": {
     "component": {
-      "scripts": [
-        "bootstrap-media-lightbox.js"
-      ],
       "files": [
         "bootstrap-media-lightbox.js",
         "bootstrap-media-lightbox.min.js",
