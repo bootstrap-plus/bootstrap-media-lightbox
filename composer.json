@@ -12,7 +12,7 @@
       "files": [
         "bootstrap-media-lightbox.js",
         "bootstrap-media-lightbox.min.js",
-        "bootstrap-media-lightbox.css",
+        "bootstrap-media-lightbox.css"
       ]
     }
   }
