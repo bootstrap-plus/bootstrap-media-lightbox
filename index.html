@@ -59,9 +59,24 @@
             </div>
             <div class="highlight" >
                 <pre>
-                    <code class="prettyprint">&lt;a class="lightbox" href="beach.jpg" title="This is a beach" &gt;<br />&nbsp;&lt;img src="beach-thumbnail.jpg" class="img-thumbnail" /&gt;<br />&lt;/a&gt;</code>
+                    <code class="prettyprint">&lt;a id="my-lightbox" href="beach.jpg" title="This is a beach" &gt;<br />&nbsp;&lt;img src="beach-thumbnail.jpg" class="img-thumbnail" /&gt;<br />&lt;/a&gt;</code>
                 </pre>
             </div>
+
+
+            <h3>Singe image with thumbnail and javascript call</h3>
+
+            <div class="bs-example">
+                <a id="my-lightbox" href="img/beach.jpg">
+                    <img src="img/beach-small.jpg" class="img-thumbnail" width="200">
+                </a>
+            </div>
+            <div class="highlight" >
+                <pre>
+                    <code class="prettyprint">&lt;a class="lightbox" href="beach.jpg"&gt;<br />&nbsp;&lt;img src="beach-thumbnail.jpg" class="img-thumbnail" /&gt;<br />&lt;/a&gt;<br /><br />&lt;script type="text/javascript"&gt;<br />&nbsp;jQuery('#my-lightbox').lightbox();<br />&lt;/script&gt;</code>
+                </pre>
+            </div>
+
 
 
             <h3>Image Gallery</h3>
@@ -106,7 +121,7 @@
 
             <h3>License</h3>
 
-            <a href="http://opensource.org/licenses/MIT">MIT</a>
+            This software is licensed under <a href="http://opensource.org/licenses/MIT">MIT</a><br /><br />
 
         </div>
 
@@ -119,6 +134,7 @@
             jQuery('#lightbox1').lightbox();
             jQuery('#lightbox2').lightbox();
             jQuery('#lightbox3').lightbox();
+            jQuery('#my-lightbox').lightbox();
             jQuery('#lightbox10').lightbox();
             jQuery('#lightbox11').lightbox();
             jQuery('.lightbox20').lightbox();
