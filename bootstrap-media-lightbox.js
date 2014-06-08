@@ -269,6 +269,8 @@
         new BootstrapLightBox($(this), options);
     };
 
-    $('.lightbox').lightbox();
+    $( document ).ready(function() {
+        $('.lightbox').lightbox();
+    });
 
 })(jQuery);
