@@ -62,6 +62,47 @@
                     <code class="prettyprint">&lt;a class="lightbox" href="beach.jpg" title="This is a beach" &gt;<br />&nbsp;&lt;img src="beach-thumbnail.jpg" class="img-thumbnail" /&gt;<br />&lt;/a&gt;</code>
                 </pre>
             </div>
+
+
+            <h3>Image Gallery</h3>
+
+            <div class="bs-example">
+                <a class="lightbox20" href="img/beach.jpg" title="This is a beach"><img src="img/beach-small.jpg" class="img-thumbnail"></a>
+                <a class="lightbox20" href="img/horse.jpg" title="This is a horse"><img src="img/horse-small.jpg" class="img-thumbnail"></a>
+            </div>
+            <div class="highlight" >
+                <pre>
+                    <code class="prettyprint">&lt;a class="lightbox" href="beach.jpg" title="This is a beach" &gt;<br />&nbsp;&lt;img src="beach-thumbnail.jpg" class="img-thumbnail" /&gt;<br />&lt;/a&gt;</code>
+                </pre>
+            </div>
+
+
+            <h3>Youtube video</h3>
+
+            <div class="bs-example">
+                <a id="lightbox10" href="http://www.youtube.com/watch?v=a8fHgx9mE5U">
+                    Click here to show the lightbox
+                </a>
+            </div>
+            <div class="highlight">
+                    <pre>
+                        <code class="prettyprint">&lt;a class="lightbox" href="http://www.youtube.com/watch?v=a8fHgx9mE5U"&gt;<br />&nbsp;Click here to show the lightbox<br />&lt;/a&gt;</code>
+                    </pre>
+            </div>
+
+            <h3>Vimeo video</h3>
+
+            <div class="bs-example">
+                <a id="lightbox11" href="http://vimeo.com/59785024">
+                    Click here to show the lightbox
+                </a>
+            </div>
+            <div class="highlight">
+                    <pre>
+                        <code class="prettyprint">&lt;a class="lightbox" href="http://vimeo.com/59785024"&gt;<br />&nbsp;Click here to show the lightbox<br />&lt;/a&gt;</code>
+                    </pre>
+            </div>
+
         </div>
 
         <script src="js/jquery-2.1.1.min.js"></script>
@@ -73,6 +114,9 @@
             jQuery('#lightbox1').lightbox();
             jQuery('#lightbox2').lightbox();
             jQuery('#lightbox3').lightbox();
+            jQuery('#lightbox10').lightbox();
+            jQuery('#lightbox11').lightbox();
+            jQuery('.lightbox20').lightbox();
         </script>
 
 
