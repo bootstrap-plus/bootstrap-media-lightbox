@@ -1,0 +1,19 @@
+{
+  "name": "phaidon/bootstrap-media-lightbox",
+  "type": "component",
+  "description": "A lightweight and borderless media lightbox extension for bootstrap3. It supports single images, image galleries, videos and iframes.",
+  "homepage": "",
+  "license": "MIT",
+  "extra": {
+    "component": {
+      "scripts": [
+        "bootstrap-media-lightbox.js"
+      ],
+      "files": [
+        "bootstrap-media-lightbox.js",
+        "bootstrap-media-lightbox.min.js",
+        "bootstrap-media-lightbox.css",
+      ]
+    }
+  }
+}
