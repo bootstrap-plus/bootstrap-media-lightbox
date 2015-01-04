@@ -121,48 +121,64 @@
             t.updatePictureInLightbox($input.eq(index-1), $input, index-1)
         });
 
+
+        $('#bootstrap-media-lightbox-close').click(function() {
+            $('#bootstrap-media-lightbox-iframe').attr("src", "");
+        });
+
     }
 
 
     BootstrapLightBox.prototype.addImage = function(target)
     {
-        // set default size if size is undefined
-        if (this.options.width === undefined && this.options.height === undefined) {
-            var image = new Image();
-            image.src = target;
-            this.options.width = image.width; // original imagel width
-            this.options.height = image.height; // originalImagelHeight
-        } else if (this.options.width === undefined) {
-            var image = new Image();
-            image.src = target;
-            this.options.width = this.options.height/image.height*image.width; // originalImagelHeight
-        } else if (this.options.height === undefined) {
-            var image = new Image();
-            image.src = target;
-            this.options.height = this.options.width/image.width*image.height; // originalImagelHeight
-        }
-        this.validateSize();
+        var t = this;
 
-        var $contentContainer = $('#bootstrap-media-lightbox-content-container');
-        $contentContainer.html('<img width="'+this.options.width+'" height="'+this.options.height+'" src="'+target+'" />');
+        var preloader = new Image();
+        preloader.onload = function() {
 
-        this.setMargins($contentContainer);
+            // set default size if size is undefined
+            if (t.options.width === undefined && t.options.height === undefined) {
+                t.contentWidth = preloader.width; // original imagel width
+                t.contentHeight = preloader.height; // originalImagelHeight
+            } else if (t.options.width === undefined) {
+                t.contentWidth = t.options.height/preloader.height*preloader.width; // originalImagelHeight
+                t.contentHeight = t.options.height;
+            } else if (t.options.height === undefined) {
+                t.contentHeight = t.options.width/preloader.width*preloader.height; // originalImagelHeight
+                t.contentWidth = t.options.width;
+            }
+
+            t.validateSize();
+
+            var $contentContainer = $('#bootstrap-media-lightbox-content-container');
+            $contentContainer.html('<img width="'+t.contentWidth+'" height="'+t.contentHeight+'" src="'+target+'" />');
+
+            t.setMargins($contentContainer);
+
+
+        };
+        preloader.src = target;
+
+
+
     }
 
     BootstrapLightBox.prototype.addIframe = function(target)
     {
         // set default size if size is undefined
         if (this.options.width === undefined && this.options.height === undefined) {
-            this.options.width = 420;
-            this.options.height = 315;
+            this.contentWidth = 420;
+            this.contentHeight = 315;
         } else if (this.options.width === undefined) {
-            this.options.width = 420/(315/this.options.height);
+            this.contentWidth = 420/(315/this.options.height);
+            this.contentHeight = this.options.height;
         } else if (this.options.height === undefined) {
-            this.options.height = 315/(420/this.options.width);
+            this.contentHeight = 315/(420/this.options.width);
+            this.contentWidth = this.options.width;
         }
 
         var $contentContainer = $('#bootstrap-media-lightbox-content-container');
-        var content = '<iframe style="background-color: white" width="'+this.options.width+'" height="'+this.options.height+'" src="'+target+'" frameborder="0" allowfullscreen></iframe>';
+        var content = '<iframe id="bootstrap-media-lightbox-iframe" style="background-color: white" width="'+this.contentWidth+'" height="'+this.contentHeight+'" src="'+target+'" frameborder="0" allowfullscreen></iframe>';
         this.setMargins($contentContainer);
         $contentContainer.html(content);
     }
@@ -172,18 +188,20 @@
     {
         // set default size if size is undefined
         if (this.options.width === undefined && this.options.height === undefined) {
-            this.options.width = 420;
-            this.options.height = 315;
+            this.contentWidth = 420;
+            this.contentHeight = 315;
         } else if (this.options.width === undefined) {
-            this.options.width = 420/(315/this.options.height);
+            this.contentWidth = 420/(315/this.options.height);
+            this.contentHeight = this.options.height;
         } else if (this.options.height === undefined) {
-            this.options.height = 315/(420/this.options.width);
+            this.contentHeight = 315/(420/this.options.width);
+            this.contentWidth = this.options.width;
         }
         this.validateSize();
 
         var $contentContainer = $('#bootstrap-media-lightbox-content-container');
         var videoId = target.substr(31)
-        var content = '<iframe width="'+this.options.width+'" height="'+this.options.height+'" src="http://www.youtube-nocookie.com/embed/'+videoId+'" frameborder="0" allowfullscreen></iframe>';
+        var content = '<iframe id="bootstrap-media-lightbox-iframe" width="'+this.contentWidth+'" height="'+this.contentHeight+'" src="http://www.youtube-nocookie.com/embed/'+videoId+'" frameborder="0" allowfullscreen></iframe>';
         $contentContainer.html(content);
 
         this.setMargins($contentContainer);
@@ -191,24 +209,27 @@
 
 
 
-
     BootstrapLightBox.prototype.addVimeoVideo = function(target)
     {
+
+
         // set default size if size is undefined
         if (this.options.width === undefined && this.options.height === undefined) {
-            this.options.width = 420;
-            this.options.height = 315;
+            this.contentWidth = 420;
+            this.contentHeight = 315;
         } else if (this.options.width === undefined) {
-            this.options.width = 420/(315/this.options.height);
+            this.contentWidth= 420/(315/this.options.height);
+            this.contentHeight = this.options.height;
         } else if (this.options.height === undefined) {
-            this.options.height = 315/(420/this.options.width);
+            this.contentHeight = 315/(420/this.options.width);
+            this.contentWidth = this.options.width;
         }
         this.validateSize();
 
 
         var $contentContainer = $('#bootstrap-media-lightbox-content-container');
         var videoId = target.substr(17)
-        var content = '<iframe width="'+this.options.width+'" height="'+this.options.height+'" src="http://player.vimeo.com/video/'+videoId+'" frameborder="0" allowfullscreen></iframe>';
+        var content = '<iframe id="bootstrap-media-lightbox-iframe" width="'+this.contentWidth+'" height="'+this.contentHeight+'" src="http://player.vimeo.com/video/'+videoId+'" frameborder="0" allowfullscreen></iframe>';
         $contentContainer.html(content);
 
         this.setMargins($contentContainer);
@@ -242,16 +263,16 @@
         var windowHeight = $( window ).height();
         var windowWidth = $( window ).width();
 
-        if (this.options.width+50 > windowWidth) {
-            var oldWith = this.options.width;
-            this.options.width = windowWidth-50;
-            this.options.height = this.options.height*this.options.width/oldWith;
+        if (this.contentWidth+50 > windowWidth) {
+            var oldWith = this.contentWidth;
+            this.contentWidth = windowWidth-50;
+            this.contentHeight = this.contentHeight*this.contentWidth/oldWith;
         }
 
-        if (this.options.height+80 > windowHeight) {
-            var oldHeight = this.options.height;
-            this.options.height = windowHeight-80;
-            this.options.width = this.options.width*this.options.height/oldHeight;
+        if (this.contentHeight+80 > windowHeight) {
+            var oldHeight = this.contentHeight;
+            this.contentHeight = windowHeight-80;
+            this.contentWidth = this.contentWidth*this.contentHeight/oldHeight;
         }
     }
 
@@ -259,8 +280,8 @@
     {
         var windowHeight = $( window ).height();
         var windowWidth = $( window ).width();
-        $element.css({"margin-top": (windowHeight-50-this.options.height)/2});
-        $element.css({"margin-left": (windowWidth-this.options.width)/2});
+        $element.css({"margin-top": (windowHeight-50-this.contentHeight)/2});
+        $element.css({"margin-left": (windowWidth-this.contentWidth)/2});
     }
 
 
@@ -269,8 +290,6 @@
         new BootstrapLightBox($(this), options);
     };
 
-    $( document ).ready(function() {
-        $('.lightbox').lightbox();
-    });
+    $('.lightbox').lightbox();
 
 })(jQuery);
