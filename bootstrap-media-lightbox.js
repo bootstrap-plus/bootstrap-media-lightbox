@@ -1,6 +1,4 @@
-( function($) {
-
-
+(function($) {
     var BootstrapLightBox = function($element, options)
     {
         this.init($element, options)
@@ -10,7 +8,6 @@
         gallery: true,
         caption: true
     }
-
 
     BootstrapLightBox.prototype.getOptions = function ($element, options)
     {
@@ -72,7 +69,6 @@
                 $('#bootstrap-media-lightbox').modal('show');
             });
         });
-
     }
 
     BootstrapLightBox.prototype.updatePictureInLightbox = function($a, $input, index)
@@ -121,13 +117,11 @@
             t.updatePictureInLightbox($input.eq(index-1), $input, index-1)
         });
 
-
         $('#bootstrap-media-lightbox-close').click(function() {
             $('#bootstrap-media-lightbox-iframe').attr("src", "");
         });
 
     }
-
 
     BootstrapLightBox.prototype.addImage = function(target)
     {
@@ -135,7 +129,7 @@
 
         var preloader = new Image();
         preloader.onload = function() {
-
+			
             // set default size if size is undefined
             if (t.options.width === undefined && t.options.height === undefined) {
                 t.contentWidth = preloader.width; // original imagel width
@@ -154,13 +148,8 @@
             $contentContainer.html('<img width="'+t.contentWidth+'" height="'+t.contentHeight+'" src="'+target+'" />');
 
             t.setMargins($contentContainer);
-
-
         };
         preloader.src = target;
-
-
-
     }
 
     BootstrapLightBox.prototype.addIframe = function(target)
@@ -207,12 +196,8 @@
         this.setMargins($contentContainer);
     }
 
-
-
     BootstrapLightBox.prototype.addVimeoVideo = function(target)
     {
-
-
         // set default size if size is undefined
         if (this.options.width === undefined && this.options.height === undefined) {
             this.contentWidth = 420;
@@ -226,7 +211,6 @@
         }
         this.validateSize();
 
-
         var $contentContainer = $('#bootstrap-media-lightbox-content-container');
         var videoId = target.substr(17)
         var content = '<iframe id="bootstrap-media-lightbox-iframe" width="'+this.contentWidth+'" height="'+this.contentHeight+'" src="http://player.vimeo.com/video/'+videoId+'" frameborder="0" allowfullscreen></iframe>';
@@ -238,12 +222,14 @@
     BootstrapLightBox.prototype.addCaption = function($a)
     {
         var caption = $a.attr('title');
-
+		
         if (caption !== "" && caption !== undefined && this.options.caption === true) {
-
+	        // в последующем это будет влиять на высоту картинки
+			this.caption = true;
             $('#bootstrap-media-lightbox-caption-container').show();
             $('#bootstrap-media-lightbox-caption').text(caption);
         } else {
+	        this.caption = false;
             $('#bootstrap-media-lightbox-caption-container').hide();
         }
     }
@@ -262,17 +248,18 @@
     {
         var windowHeight = $( window ).height();
         var windowWidth = $( window ).width();
-
-        if (this.contentWidth+50 > windowWidth) {
+		var offsetHeight = this.caption?80:30;
+		
+        if (this.contentWidth + 50 > windowWidth) {
             var oldWith = this.contentWidth;
-            this.contentWidth = windowWidth-50;
-            this.contentHeight = this.contentHeight*this.contentWidth/oldWith;
+            this.contentWidth = windowWidth - 50;
+            this.contentHeight = this.contentHeight * this.contentWidth / oldWith;
         }
-
-        if (this.contentHeight+80 > windowHeight) {
+		
+        if (this.contentHeight + offsetHeight > windowHeight) {
             var oldHeight = this.contentHeight;
-            this.contentHeight = windowHeight-80;
-            this.contentWidth = this.contentWidth*this.contentHeight/oldHeight;
+            this.contentHeight = windowHeight - offsetHeight;
+            this.contentWidth = this.contentWidth * this.contentHeight / oldHeight;
         }
     }
 
@@ -280,13 +267,14 @@
     {
         var windowHeight = $( window ).height();
         var windowWidth = $( window ).width();
-        $element.css({"margin-top": (windowHeight-50-this.contentHeight)/2});
-        $element.css({"margin-left": (windowWidth-this.contentWidth)/2});
+		var offsetHeight = this.caption?50:0;
+        
+        $element.css({"margin-top": (windowHeight - offsetHeight - this.contentHeight)/2});
+        $element.css({"margin-left": (windowWidth - this.contentWidth)/2});
     }
 
-
-    $.fn.lightbox = function(options) {
-
+    $.fn.lightbox = function(options)
+    {
         new BootstrapLightBox($(this), options);
     };
 
