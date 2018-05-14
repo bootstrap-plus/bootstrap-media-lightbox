@@ -75,13 +75,13 @@
     {
         var t = this;
 
-        if (this.options.gallery === false || $input.size() < 2) {
+        if (this.options.gallery === false || $input.length < 2) {
             $('#bootstrap-media-lightbox-backward').hide();
             $('#bootstrap-media-lightbox-forward').hide();
         } else if (index == 0) {
             $('#bootstrap-media-lightbox-backward').hide();
             $('#bootstrap-media-lightbox-forward').show();
-        } else if (index == $input.size() - 1) {
+        } else if (index == $input.length - 1) {
             $('#bootstrap-media-lightbox-backward').show();
             $('#bootstrap-media-lightbox-forward').hide();
         } else {
